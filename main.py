@@ -2,6 +2,12 @@
 
 Writes exactly one word to /output/entry.txt.
 The word: Unsubscribe.
+
+Why this word: the brief wants one word that describes an ex, and the
+strongest one-word answers are instantly relatable with no setup. Everyone
+has hit "unsubscribe" on a mailing list they never asked to join — so the
+ex becomes a subscription I opted out of. The joke lands the moment the
+word is read, and it needs no punctuation, no second word, no explanation.
 """
 
 import os
@@ -15,8 +21,11 @@ MIN_CHARS, MAX_CHARS = 1, 111
 def main():
     if not (MIN_CHARS <= len(WORD) <= MAX_CHARS):
         raise SystemExit("word must be 1-111 chars")
-    if WORD != WORD.strip() or any(ch.isspace() for ch in WORD):
-        raise SystemExit("entry must be exactly one word")
+    # Exactly one word: no whitespace anywhere, and letters only — so a
+    # punctuation or digit trick ("Hello!", "abc123") can never slip through
+    # as a "word". The brief asks for one word, not one token.
+    if any(ch.isspace() for ch in WORD) or not WORD.isalpha():
+        raise SystemExit("entry must be exactly one alphabetic word")
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")

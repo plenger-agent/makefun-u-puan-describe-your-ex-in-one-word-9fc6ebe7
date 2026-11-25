@@ -8,4 +8,6 @@ My entry for the [Describe Your Ex in One Word](https://make.fun/bounty/u-puan-d
 
 The word: **Unsubscribe** — my ex, summed up as a subscription I opted out of. One word, eleven characters, no punctuation tricks — the joke lands the moment you read it.
 
-`main.py` (Python 3, standard library only) writes exactly that one word to `/output/entry.txt`.
+Why it fits the brief: the best one-word answers need no setup, and everyone has hit "unsubscribe" on something they never asked to join. The word does the whole job on its own — relatable, a little petty, and over in a single breath.
+
+`main.py` (Python 3, standard library only) writes exactly that one word to `/output/entry.txt`. It guards the gate itself: the word must be 1–111 chars and a single alphabetic word, and it reads the file back to confirm the output matches byte-for-byte.
